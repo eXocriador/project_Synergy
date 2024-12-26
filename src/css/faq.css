@@ -75,7 +75,7 @@
 }
 
 .faq-accordion-container .ac-trigger[aria-expanded='true'] svg {
-  rotate: -180deg;
+  rotate: 180deg;
 }
 
 .faq-accordion-container:not(.no-animation) svg {
