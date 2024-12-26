@@ -1,139 +1,114 @@
-/* Загальні стилі */
 #faq {
-  width: 100%;
-}
-
-.container {
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
-.container-faq {
-  display: grid;
-  grid-template-columns: 1fr; /* Один стовпчик за замовчуванням */
-  gap: 0; /* Прибираємо проміжки між елементами */
   margin-bottom: 64px;
-  /* border: 1px solid rgba(250, 250, 250, 0.2);  */
-  /* Загальна рамка контейнера */
-}
-
-.container-faq ul {
-  display: contents;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.faq-item {
-  background-color: #1c1d20;
-  padding: 20px;
-  border: none; /* Прибираємо межі за замовчуванням */
-  border-bottom: 1px solid rgba(250, 250, 250, 0.2); /* Загальна нижня межа */
-  position: relative;
-  padding-right: 60px;
-}
-
-/*  верхня межа для першого елемента */
-.faq-item:first-child {
-  border-top: 1px solid rgba(250, 250, 250, 0.2);
-}
-
-.faq-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: 1px solid rgba(250, 250, 250, 0.2);
-  border-radius: 50%;
-  background: none;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 36px;
-  height: 36px;
-}
-
-.faq-icon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-.faq-item h3 {
-  color: #fff;
-  margin-bottom: 16px;
-  cursor: pointer;
-}
-
-.faq-item p {
-  color: #888;
-  display: none; /* Приховуємо параграфи за замовчуванням */
 }
 
 .main-section-faq-title {
-  font: 600 16px / 1.5 'Inter Tight', sans-serif;
+  color: #fafafa66;
+  font-family: Inter Tight;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5em;
   letter-spacing: -0.02em;
-  color: #7c7b7b;
   margin-bottom: 32px;
 }
 
-/* Мобільні пристрої та планшети (до 1023px) */
-@media (max-width: 1023px) {
-  .container-faq {
-    grid-template-columns: 1fr; /* Один стовбчик */
-    margin-bottom: 64px;
-  }
+.faq-accordion-container .ac-trigger::after {
+  display: none;
+}
 
-  .faq-item {
-    border-right: none; /* Прибираємо праву межу */
-    border-left: none; /* Прибираємо ліву межу */
-    padding-right: 50px;
+.faq-accordion-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.faq-accordion-container .ac {
+  width: 100%;
+  background-color: transparent;
+  padding: 20px 0;
+  border: none;
+  border-bottom: 1px solid #fafafa33;
+  margin: 0;
+}
+
+.faq-accordion-container .ac:first-child {
+  border-top: 1px solid #fafafa33;
+}
+
+.faq-accordion-container .ac-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  font-family: Inter Tight;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5em;
+  letter-spacing: -0.02em;
+  text-align: left;
+  gap: 20px;
+}
+
+.faq-accordion-container .ac-trigger svg {
+  display: block;
+  stroke: #fafafa;
+  fill: none;
+}
+
+.faq-accordion-container .ac-header .ac-trigger {
+  margin: 0;
+  padding: 6px;
+  border: 1px solid #fafafa33;
+  border-radius: 50%;
+  width: auto;
+}
+
+.faq-accordion-container .ac .ac-panel .ac-text {
+  font: initial;
+  padding: 0;
+  padding-top: 16px;
+  color: #fafafa99;
+  font-family: 'Inter Tight', serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5em;
+  letter-spacing: -0.02em;
+}
+
+.faq-accordion-container .ac-trigger[aria-expanded='true'] svg {
+  rotate: -180deg;
+}
+
+.faq-accordion-container:not(.no-animation) svg {
+  transition: rotate ease 600ms;
+}
+
+@media only screen and (min-width: 768px) {
+  #faq {
+    margin-bottom: 96px;
+  }
+  .faq-accordion-container .ac {
+    padding: 32px 0;
+  }
+  .faq-accordion-container .ac-header .ac-trigger {
+    padding: 9px;
   }
 }
 
-/* Десктопи (від 1024px) */
-@media (min-width: 1024px) {
-  .container-faq {
-    grid-template-columns: repeat(2, 1fr); /* Дві колонки */
-    gap: 0; /* Прибираємо проміжки між колонками */
+@media only screen and (min-width: 1440px) {
+  #faq {
     margin-bottom: 164px;
   }
-
-  .faq-item {
-    padding-right: 70px;
+  .faq-accordion-container .ac {
+    width: 50%;
   }
-
-  /* Вертикальна межа між колонками */
-  .faq-item:nth-child(odd) {
-    border-right: 1px solid rgba(250, 250, 250, 0.2); /* Права межа */
-    border-left: none; /* Прибираємо ліву межу */
+  .faq-accordion-container .ac:nth-child(2) {
+    border-top: 1px solid #fafafa33;
   }
-
-  .faq-item:nth-child(even) {
-    border-left: 1px solid rgba(250, 250, 250, 0.2); /* Ліва межа */
-    border-right: none; /* Убираем правую границу */
+  .faq-accordion-container .ac:nth-child(even) {
+    padding-left: 32px;
   }
-
-  /* Нижня межа тільки для першого ряду */
-  .faq-item:nth-child(-n + 2) {
-    border-bottom: 1px solid rgba(250, 250, 250, 0.2);
-    /* Нижня межа першого ряду */
-  }
-
-  /* Встановлюємо нижню межу для останнього ряду */
-  .faq-item:nth-last-child(-n + 2) {
-    border-bottom: 1px solid rgba(250, 250, 250, 0.2);
-  }
-  /* Встановлюємо верхню межу для першого елементу */
-  .faq-item:first-child(-n + 2) {
-    border-bottom: 1px solid rgba(250, 250, 250, 0.2);
-  }
-
-  /* Встановлюємо верхню межу для четвертого елементу */
-  li:nth-child(2n) {
-    border-top: 1px solid rgba(250, 250, 250, 0.2);
+  .faq-accordion-container .ac:nth-child(odd) {
+    padding-right: 32px;
+    border-right: 1px solid #fafafa33;
   }
 }
